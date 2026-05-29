@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Taste of China — Chinese Takeaway, Dunstable</title>
+<meta name="description" content="A Taste of China is a Chinese takeaway on Dunstable High Street. Collection and delivery across LU1–LU7. Call 01582 664 811.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+  :root{
+    --seal: #8B3A3A;      /* primary · seal-red */
+    --seal-deep: #5E2424; /* darker red for hover/ink-on-paper headers */
+    --paper: #F4E4BC;     /* cream paper */
+    --paper-soft: #FAF1D8;/* lifted cream for cards */
+    --ink: #1A0E0A;       /* ink */
+    --ink-soft: #4A3A30;  /* body soft */
+    --gold: #C9A14A;      /* fine gold for dividers */
+    --rule: rgba(26,14,10,.18);
+
+    --display: "Fraunces", "Cormorant Garamond", Georgia, serif;
+    --body: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+
+    --rhythm: clamp(1rem, .85rem + .35vw, 1.125rem);
+    --gutter: clamp(1.25rem, 2vw + .5rem, 2.5rem);
+    --max: 1180px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:var(--rhythm);
+    line-height:1.55;
+    font-variation-settings:"opsz" 14;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    /* faint paper texture using layered conic + noise-like radial */
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(139,58,58,.06), transparent 35%),
+      radial-gradient(circle at 88% 80%, rgba(201,161,74,.10), transparent 40%);
+  }
+
+  h1,h2,h3,h4{
+    font-family:var(--display);
+    font-weight:600;
+    line-height:1.05;
+    letter-spacing:-.012em;
+    text-wrap:balance;
+    margin:0 0 .4em;
+    color:var(--seal-deep);
+  }
+  h1{ font-size:clamp(2.75rem, 6vw + 1rem, 6.5rem); font-variation-settings:"opsz" 144, "SOFT" 30; }
+  h2{ font-size:clamp(1.85rem, 3vw + .6rem, 3.25rem); }
+  h3{ font-size:clamp(1.25rem, 1.2vw + .6rem, 1.6rem); }
+  p{ margin:0 0 1em; text-wrap:pretty; hyphens:auto; color:var(--ink-soft); max-width:62ch; }
+  a{ color:var(--seal); text-underline-offset:.2em; text-decoration-thickness:1px; }
+  a:hover{ color:var(--seal-deep); }
+  em{ font-style:italic; font-variation-settings:"opsz" 60; }
+
+  .wrap{ width:min(100% - var(--gutter)*2, var(--max)); margin-inline:auto; }
+
+  /* ── top hairline rule + marquee ─────────────────────────── */
+  .ribbon{
+    background:var(--seal);
+    color:var(--paper);
+    overflow:hidden;
+    border-bottom:1px solid var(--seal-deep);
+  }
+  .ribbon__track{
+    display:inline-flex; gap:3rem; white-space:nowrap;
+    padding:.55rem 0;
+    animation:scroll 38s linear infinite;
+    font-family:var(--display);
+    font-size:.95rem;
+    letter-spacing:.04em;
+    font-variation-settings:"opsz" 30;
+  }
+  .ribbon__track span::after{ content:"·"; margin-left:3rem; color:var(--gold); }
+  @keyframes scroll{ to{ transform:translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce){ .ribbon__track{ animation:none; } }
+
+  /* ── nav ─────────────────────────────────────────────────── */
+  nav.top{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1.4rem 0;
+    border-bottom:1px solid var(--rule);
+  }
+  nav.top .mark{
+    font-family:var(--display);
+    font-weight:800;
+    font-size:1.15rem;
+    color:var(--seal-deep);
+    letter-spacing:.01em;
+  }
+  nav.top .mark em{ color:var(--gold); font-style:normal; }
+  nav.top ul{
+    display:flex; gap:1.6rem; margin:0; padding:0; list-style:none;
+    font-family:var(--display);
+    font-size:.95rem;
+  }
+  nav.top ul a{
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+    transition:border-color .2s, color .2s;
+  }
+  nav.top ul a:hover{ border-color:var(--seal); color:var(--seal); }
+  nav.top .tel{
+    display:none;
+    font-family:var(--display);
+    font-weight:600;
+    padding:.45rem .9rem;
+    border:1px solid var(--seal);
+    color:var(--seal);
+    border-radius:999px;
+    text-decoration:none;
+    font-size:.95rem;
+  }
+  nav.top .tel:hover{ background:var(--seal); color:var(--paper); }
+  @media (min-width: 720px){
+    nav.top .tel{ display:inline-block; }
+  }
+  @media (max-width: 540px){
+    nav.top ul{ gap:1rem; font-size:.9rem; }
+  }
+
+  /* ── hero ────────────────────────────────────────────────── */
+  .hero{
+    padding:clamp(3rem, 8vw, 6.5rem) 0 clamp(3.5rem, 9vw, 7rem);
+    position:relative;
+  }
+  .hero__eyebrow{
+    display:inline-block;
+    font-family:var(--display);
+    font-size:.85rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--seal);
+    margin-bottom:1.6rem;
+    padding-bottom:.4rem;
+    border-bottom:1px solid var(--gold);
+  }
+  .hero h1{ margin:0 0 .3em; }
+  .hero h1 .second{ display:block; color:var(--seal); font-style:italic; }
+  .hero__tag{
+    font-family:var(--display);
+    font-size:clamp(1.1rem, 1.2vw + .8rem, 1.5rem);
+    color:var(--ink);
+    max-width:30ch;
+    margin:1.2rem 0 2.4rem;
+    font-variation-settings:"opsz" 60;
+  }
+  .hero__ctas{ display:flex; gap:1rem; flex-wrap:wrap; align-items:center; }
+  .btn{
+    display:inline-flex; align-items:center; gap:.6rem;
+    font-family:var(--display);
+    font-size:1.05rem;
+    font-weight:600;
+    padding:.95rem 1.5rem;
+    text-decoration:none;
+    border-radius:2px;
+    transition:transform .15s ease, box-shadow .2s ease, background .2s, color .2s;
+  }
+  .btn--primary{
+    background:var(--seal);
+    color:var(--paper);
+    border:1px solid var(--seal);
+    box-shadow:0 1px 0 var(--seal-deep), 0 8px 22px -10px rgba(139,58,58,.55);
+  }
+  .btn--primary:hover{ background:var(--seal-deep); border-color:var(--seal-deep); transform:translateY(-1px); color:var(--paper); }
+  .btn--ghost{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--ink);
+  }
+  .btn--ghost:hover{ background:var(--ink); color:var(--paper); }
+
+  /* hero panel right-side (today card) */
+  .hero__grid{
+    display:grid;
+    gap:clamp(2rem, 4vw, 3.5rem);
+    grid-template-columns:1fr;
+    align-items:end;
+  }
+  @media (min-width: 920px){
+    .hero__grid{ grid-template-columns:minmax(0,1.55fr) minmax(0,1fr); }
+  }
+  .today{
+    background:var(--paper-soft);
+    border:1px solid var(--rule);
+    padding:1.6rem 1.6rem 1.4rem;
+    position:relative;
+  }
+  .today::before{
+    content:"";
+    position:absolute; inset:6px;
+    border:1px solid var(--gold);
+    pointer-events:none;
+    opacity:.45;
+  }
+  .today h3{
+    font-size:.85rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--seal);
+    margin:0 0 1rem;
+    font-weight:600;
+  }
+  .today dl{ margin:0; display:grid; grid-template-columns:auto 1fr; row-gap:.4rem; column-gap:1.2rem; font-size:.95rem; }
+  .today dt{ font-family:var(--display); font-weight:600; color:var(--ink); }
+  .today dd{ margin:0; color:var(--ink-soft); }
+  .today .closed{ color:var(--seal); font-style:italic; }
+
+  /* ── section frame ───────────────────────────────────────── */
+  section{ padding:clamp(3.5rem, 7vw, 6rem) 0; border-top:1px solid var(--rule); position:relative; }
+  .eyebrow{
+    display:inline-block;
+    font-family:var(--display);
+    font-size:.78rem;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:var(--seal);
+    margin-bottom:1.2rem;
+    padding-bottom:.35rem;
+    border-bottom:1px solid var(--gold);
+  }
+  .section-head{ max-width:60ch; margin-bottom:clamp(2rem, 3vw, 3rem); }
+
+  /* ── about ───────────────────────────────────────────────── */
+  .about__grid{
+    display:grid; gap:clamp(2rem, 4vw, 4rem);
+    grid-template-columns:1fr;
+  }
+  @media (min-width:920px){
+    .about__grid{ grid-template-columns:1.25fr 1fr; }
+  }
+  .about__panel{
+    border:1px solid var(--rule);
+    padding:1.8rem;
+    background:rgba(244,228,188,.45);
+  }
+  .about__panel h3{ color:var(--seal); }
+  .about__panel ul{ list-style:none; padding:0; margin:0; }
+  .about__panel li{
+    display:flex; justify-content:space-between; gap:1rem;
+    padding:.55rem 0;
+    border-bottom:1px dotted var(--rule);
+    font-size:.95rem;
+  }
+  .about__panel li:last-child{ border-bottom:0; }
+  .about__panel li span:first-child{ color:var(--ink); font-family:var(--display); font-weight:600; }
+  .about__panel li span:last-child{ color:var(--ink-soft); text-align:right; }
+
+  /* ── menu ────────────────────────────────────────────────── */
+  .menu-grid{
+    display:grid; gap:clamp(1.25rem, 2vw, 2rem);
+    grid-template-columns:repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  }
+  .card{
+    border:1px solid var(--rule);
+    background:var(--paper-soft);
+    padding:1.4rem 1.4rem 1.6rem;
+    position:relative;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .card::after{
+    content:"";
+    position:absolute; left:1.4rem; right:1.4rem; bottom:1rem; height:1px;
+    background:linear-gradient(90deg, var(--gold), transparent 70%);
+    opacity:.55;
+  }
+  .card h3{
+    font-size:1.35rem;
+    color:var(--seal-deep);
+    margin:0 0 .35em;
+  }
+  .card .price{
+    font-family:var(--display);
+    font-size:.95rem;
+    color:var(--seal);
+    letter-spacing:.04em;
+    margin:0 0 .8em;
+    display:inline-block;
+  }
+  .card p{ font-size:.95rem; margin:0; color:var(--ink-soft); }
+  @supports (animation-timeline: view()){
+    @media (prefers-reduced-motion: no-preference){
+      .card{
+        animation: rise both;
+        animation-timeline: view();
+        animation-range: entry 5% cover 25%;
+      }
+      @keyframes rise{
+        from{ opacity:0; transform:translateY(1.2rem); }
+        to{ opacity:1; transform:translateY(0); }
+      }
+    }
+  }
+  .menu-note{
+    margin-top:2rem;
+    font-size:.95rem;
+    color:var(--ink-soft);
+    font-style:italic;
+    max-width:60ch;
+  }
+
+  /* ── gallery placeholder ─────────────────────────────────── */
+  .gallery__placeholder{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1rem;
+    margin-top:1.5rem;
+  }
+  .gallery__placeholder div{
+    aspect-ratio:4/3;
+    background:
+      repeating-linear-gradient(135deg,
+        rgba(139,58,58,.06) 0 10px,
+        rgba(244,228,188,0) 10px 22px),
+      var(--paper-soft);
+    border:1px solid var(--rule);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--seal);
+    font-family:var(--display);
+    font-size:.85rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+  }
+  @media (max-width:640px){
+    .gallery__placeholder{ grid-template-columns:repeat(2, 1fr); }
+  }
+
+  /* ── contact ─────────────────────────────────────────────── */
+  .contact__grid{
+    display:grid; gap:clamp(2rem, 4vw, 3.5rem);
+    grid-template-columns:1fr;
+  }
+  @media (min-width:920px){
+    .contact__grid{ grid-template-columns:1fr 1.2fr; }
+  }
+  .contact__details p{ margin:0 0 1.1em; font-size:1.05rem; }
+  .contact__details .label{
+    font-family:var(--display);
+    font-size:.78rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--seal);
+    margin-bottom:.2rem;
+    display:block;
+  }
+  .contact__details .big{
+    font-family:var(--display);
+    font-size:1.6rem;
+    color:var(--seal-deep);
+    text-decoration:none;
+    border-bottom:1px solid var(--gold);
+    padding-bottom:.1rem;
+  }
+  .contact__details .big:hover{ color:var(--seal); }
+  .hours{
+    margin-top:1.5rem;
+    border:1px solid var(--rule);
+    padding:1.4rem;
+    background:var(--paper-soft);
+  }
+  .hours h3{ font-size:1.05rem; color:var(--seal-deep); margin:0 0 .8rem; }
+  .hours table{ width:100%; border-collapse:collapse; font-size:.95rem; }
+  .hours th, .hours td{ text-align:left; padding:.4rem .3rem; border-bottom:1px dotted var(--rule); }
+  .hours th{ font-family:var(--display); color:var(--ink); font-weight:600; }
+  .hours td{ color:var(--ink-soft); }
+  .hours tr:last-child th, .hours tr:last-child td{ border-bottom:0; }
+  .hours .closed{ color:var(--seal); font-style:italic; }
+  .map{
+    border:1px solid var(--rule);
+    overflow:hidden;
+    aspect-ratio:4/3;
+    background:var(--paper-soft);
+  }
+  .map iframe{ width:100%; height:100%; border:0; display:block; filter:sepia(.15) contrast(.95) saturate(.85); }
+
+  /* ── footer ──────────────────────────────────────────────── */
+  footer{
+    border-top:1px solid var(--rule);
+    padding:2.5rem 0 3rem;
+    font-size:.9rem;
+    color:var(--ink-soft);
+  }
+  footer .wrap{
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem;
+  }
+  footer .mark{
+    font-family:var(--display);
+    color:var(--seal-deep);
+    font-weight:800;
+  }
+  footer a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--rule); }
+  footer a:hover{ color:var(--seal); border-color:var(--seal); }
+
+  ::selection{ background:var(--seal); color:var(--paper); }
+</style>
+</head>
+<body>
+
+<div class="ribbon" aria-hidden="true">
+  <div class="ribbon__track">
+    <span>Collection from 5pm</span>
+    <span>Delivery from 4:30pm</span>
+    <span>Serving LU1 · LU3 · LU4 · LU5 · LU6 · LU7</span>
+    <span>Closed Wednesdays for delivery</span>
+    <span>Call 01582 664 811</span>
+    <span>Collection from 5pm</span>
+    <span>Delivery from 4:30pm</span>
+    <span>Serving LU1 · LU3 · LU4 · LU5 · LU6 · LU7</span>
+    <span>Closed Wednesdays for delivery</span>
+    <span>Call 01582 664 811</span>
+  </div>
+</div>
+
+<header class="wrap">
+  <nav class="top">
+    <a href="#top" class="mark">A Taste <em>·</em> China</a>
+    <ul>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="tel:01582664811" class="tel">01582 664 811</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ── HERO ─────────────────────────────────────────────────── -->
+  <section class="hero" style="border-top:0; padding-top:clamp(2rem, 5vw, 3.5rem);">
+    <div class="wrap">
+      <div class="hero__grid">
+        <div>
+          <span class="hero__eyebrow">Dunstable · LU6 · Est. on the High Street</span>
+          <h1>A Taste<span class="second">of China.</span></h1>
+          <p class="hero__tag">A Chinese takeaway on Dunstable High Street North. Over a hundred dishes — duck, curry, chow mein, sweet &amp; sour — cooked to order. Collection and delivery across LU1 to LU7.</p>
+          <div class="hero__ctas">
+            <a href="tel:01582664811" class="btn btn--primary">Call to order · 01582 664 811</a>
+            <a href="#menu" class="btn btn--ghost">See the menu</a>
+          </div>
+        </div>
+
+        <aside class="today" aria-label="Today and tonight">
+          <h3>Open Tonight</h3>
+          <dl>
+            <dt>Mon &amp; Tue</dt><dd>Delivery 4:30pm — 10pm</dd>
+            <dt>Wed</dt><dd class="closed">Collection only · 5pm — 11pm</dd>
+            <dt>Thu</dt><dd>Delivery 4:30pm — 10pm</dd>
+            <dt>Fri &amp; Sat</dt><dd>Delivery 4:30pm — 10:30pm</dd>
+            <dt>Sun</dt><dd>Delivery 4:30pm — 10pm</dd>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ────────────────────────────────────────────────── -->
+  <section id="about">
+    <div class="wrap">
+      <div class="about__grid">
+        <div>
+          <span class="eyebrow">About</span>
+          <h2>The neighbourhood takeaway, plain and proud.</h2>
+          <p>A Taste of China sits at the top of Dunstable High Street North — number 159, a few doors from the corner. The kitchen runs the kind of menu Dunstable expects of a Chinese takeaway: a long one. Duck, lamb, beef, chicken, king prawn, vegetable, and a full sheet of curries, chow meins, chop sueys and sweet &amp; sour.</p>
+          <p>Cooking is to order. Boxes are filled by the wok. Pick up at the counter or get it brought to the door anywhere in LU1, LU3, LU4, LU5, LU6 or LU7. No marketing, no fuss — just the food, served the way the neighbourhood has come to like it.</p>
+        </div>
+
+        <div class="about__panel">
+          <h3>At a glance</h3>
+          <ul>
+            <li><span>Address</span><span>159 High Street North, Dunstable LU6 1JW</span></li>
+            <li><span>Phone</span><span><a href="tel:01582664811">01582 664 811</a></span></li>
+            <li><span>Format</span><span>Takeaway · Collection &amp; delivery</span></li>
+            <li><span>Cuisine</span><span>Chinese · 100+ dishes</span></li>
+            <li><span>Delivery zone</span><span>LU1 · LU3 · LU4 · LU5 · LU6 · LU7</span></li>
+            <li><span>Hygiene rating</span><span>FSA inspected · Nov 2024</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MENU (Services) ──────────────────────────────────────── -->
+  <section id="menu">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Menu · 16 categories</span>
+        <h2>From appetisers to set dinners — the full sheet.</h2>
+        <p>Price guide below. The full menu, with every dish and exact pricing, is available to view and order on Just Eat and Uber Eats, or by calling the shop on 01582 664 811.</p>
+      </div>
+
+      <div class="menu-grid">
+        <article class="card">
+          <h3>Appetisers</h3>
+          <span class="price">£5 — £8</span>
+          <p>Crispy fried seaweed, spare ribs, pancake rolls, prawn toast, dim sum.</p>
+        </article>
+        <article class="card">
+          <h3>Soups</h3>
+          <span class="price">£4 — £6</span>
+          <p>Hot &amp; sour, wun tun, chicken &amp; sweetcorn, mixed vegetable.</p>
+        </article>
+        <article class="card">
+          <h3>Rice Dishes</h3>
+          <span class="price">£4.80 — £9.45</span>
+          <p>Egg fried, special fried, plain boiled, king prawn special.</p>
+        </article>
+        <article class="card">
+          <h3>Duck Dishes</h3>
+          <span class="price">£9.20 — £9.45</span>
+          <p>Roast duck in plum sauce, Cantonese-style, ginger &amp; spring onion, sliced duck black bean.</p>
+        </article>
+        <article class="card">
+          <h3>King Prawn &amp; Seafood</h3>
+          <span class="price">£9.20 — £9.45</span>
+          <p>Salt &amp; pepper, black bean, satay, sweet &amp; sour, kung po.</p>
+        </article>
+        <article class="card">
+          <h3>Lamb</h3>
+          <span class="price">£10.25 — £12.60</span>
+          <p>Sliced lamb in oyster sauce, Mongolian-style, ginger &amp; spring onion.</p>
+        </article>
+        <article class="card">
+          <h3>Chicken</h3>
+          <span class="price">£8.40 — £8.90</span>
+          <p>Lemon chicken, black bean, satay, kung po, mushroom.</p>
+        </article>
+        <article class="card">
+          <h3>Sweet &amp; Sour</h3>
+          <span class="price">£6.05 — £8.90</span>
+          <p>Hong Kong-style sweet &amp; sour chicken, pork, prawn, balls, or Cantonese-style.</p>
+        </article>
+        <article class="card">
+          <h3>Curry</h3>
+          <span class="price">£6.60 — £9.75</span>
+          <p>Chinese curry — chicken, beef, prawn, king prawn, vegetable, mixed.</p>
+        </article>
+        <article class="card">
+          <h3>Rice Noodles</h3>
+          <span class="price">£6.30 — £7.85</span>
+          <p>Singapore-style, Cantonese-style, Malaysian-style with assorted meats.</p>
+        </article>
+        <article class="card">
+          <h3>Chow Mein</h3>
+          <span class="price">£5.75 — £10.50</span>
+          <p>House special, chicken, beef, mushroom, vegetable, king prawn.</p>
+        </article>
+        <article class="card">
+          <h3>Satay Chow Mein</h3>
+          <span class="price">£6.30 — £8.40</span>
+          <p>Satay-tossed chow mein — chicken, beef, prawn or vegetable.</p>
+        </article>
+        <article class="card">
+          <h3>Chop Suey</h3>
+          <span class="price">£6.90 — £8.90</span>
+          <p>Chicken, beef, mushroom, vegetable or king prawn chop suey.</p>
+        </article>
+        <article class="card">
+          <h3>Beef</h3>
+          <span class="price">£8.70 — £8.90</span>
+          <p>Black bean, ginger &amp; spring onion, oyster sauce, kung po.</p>
+        </article>
+        <article class="card">
+          <h3>Roast Pork</h3>
+          <span class="price">£8.40</span>
+          <p>Chinese-style roast pork — char siu — with rice or noodles.</p>
+        </article>
+        <article class="card">
+          <h3>Vegetable Dishes</h3>
+          <span class="price">£6.30 — £7.10</span>
+          <p>Mixed vegetables, mushroom, beanshoot, mock-meat options.</p>
+        </article>
+      </div>
+
+      <p class="menu-note">Plus set meals, special set dinners, English dishes, desserts, drinks and extra sauces. Large portion upgrades available on most mains.</p>
+    </div>
+  </section>
+
+  <!-- ── GALLERY ──────────────────────────────────────────────── -->
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Gallery</span>
+        <h2>Photographs — coming soon.</h2>
+        <p>A shoot of the kitchen, the counter and the food is on the way. Until then, the menu does the talking.</p>
+      </div>
+      <div class="gallery__placeholder" aria-hidden="true">
+        <div>Coming soon</div>
+        <div>Coming soon</div>
+        <div>Coming soon</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ──────────────────────────────────────────────── -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Contact</span>
+        <h2>Find us, call us, or order in.</h2>
+      </div>
+
+      <div class="contact__grid">
+        <div class="contact__details">
+          <p>
+            <span class="label">Phone</span>
+            <a href="tel:01582664811" class="big">01582 664 811</a>
+          </p>
+          <p>
+            <span class="label">Address</span>
+            159 High Street North<br>
+            Dunstable, Bedfordshire<br>
+            LU6 1JW
+          </p>
+          <p>
+            <span class="label">Order online</span>
+            Available via Just Eat and Uber Eats — search <em>Taste of China · Dunstable</em>.
+          </p>
+
+          <div class="hours">
+            <h3>Opening hours</h3>
+            <table>
+              <thead><tr><th>Day</th><th>Collection</th><th>Delivery</th></tr></thead>
+              <tbody>
+                <tr><th>Mon</th><td>5pm — 9:30pm</td><td>4:30pm — 10pm</td></tr>
+                <tr><th>Tue</th><td>5pm — 9:30pm</td><td>4:30pm — 10pm</td></tr>
+                <tr><th>Wed</th><td>5pm — 11pm</td><td class="closed">Closed</td></tr>
+                <tr><th>Thu</th><td>5pm — 9:30pm</td><td>4:30pm — 10pm</td></tr>
+                <tr><th>Fri</th><td>5pm — 10:30pm</td><td>4:30pm — 10:30pm</td></tr>
+                <tr><th>Sat</th><td>5pm — 10:30pm</td><td>4:30pm — 10:30pm</td></tr>
+                <tr><th>Sun</th><td>5pm — 9:30pm</td><td>4:30pm — 10pm</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="map">
+          <iframe
+            title="Map of A Taste of China, 159 High Street North, Dunstable LU6 1JW"
+            src="https://www.google.com/maps?q=159+High+Street+North,+Dunstable+LU6+1JW&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <span class="mark">A Taste of China</span> · 159 High Street North · Dunstable · LU6 1JW
+    </div>
+    <div>
+      <a href="tel:01582664811">01582 664 811</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
